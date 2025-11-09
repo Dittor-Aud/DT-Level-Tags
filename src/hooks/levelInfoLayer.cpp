@@ -63,7 +63,7 @@ class $modify(TagsLevelInfoLayer, LevelInfoLayer) {
         });
 
         auto req = web::WebRequest();
-        m_fields->m_listener.setFilter(req.get(fmt::format("https://raw.githubusercontent.com/KampWskiR/test3/main/tags/{}.json", m_level->m_levelID.value())));
+        m_fields->m_listener.setFilter(req.get(fmt::format("https://raw.githubusercontent.com/Dittor-Aud/tagging/main/tags/{}.json", m_level->m_levelID.value())));
     };
 
     void updateTags() {
