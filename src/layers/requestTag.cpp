@@ -6,7 +6,7 @@ bool RequestTag::setup(std::vector<std::variant<std::string, bool>> level) {
     m_closeBtn->setPosition({m_mainLayer->getContentWidth() / 2, 25});
     m_closeBtn->setSprite(ButtonSprite::create("Ok"));
 
-    this->setTitle("Requesting temporarily closed");
+    this->setTitle("Request your tags!");
 
     auto sad = CCSprite::create("sad.png"_spr);
     sad->setPosition({m_mainLayer->getContentWidth() / 2, 95});
@@ -20,13 +20,11 @@ bool RequestTag::setup(std::vector<std::variant<std::string, bool>> level) {
     bg->setOpacity(100);
     m_mainLayer->addChild(bg);
 
-    std::string infoStr = "We regret to announce that we have to temporarily close tag requesting.\n"
-                          "The reason for this decision is that the current requesting system has proven to be inefficient "
-                          "because there was simply too much requests, which were being handled manually.\n"
-                          "We have decided to completely rebuild the requesting system to make it fully automatic and "
-                          "driven by community votes.\n"
-                          "In the meantime, you can still request tags on our discord.\n"
-                          "Stay tuned!";
+    std::string infoStr = "Unfortunately you cannot request tags directly here.\n"
+                          "But worry not, you can request tags on discord! Just click the discord icon "
+                          "to join our server, find the tag request channel, req, wait for approval, and walaa.\n"
+                          "We are waiting for the official dev to rebuild the requesting system.\n"
+                          "In the meantime, tag requests are on our discord.\n";
 
     auto info = SimpleTextArea::create(infoStr, "chatFont.fnt", 0.6, 270);
     info->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
