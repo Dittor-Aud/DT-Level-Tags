@@ -30,7 +30,7 @@ class $modify(TagsMenuLayer, MenuLayer) {
         });
 
         auto req = web::WebRequest();
-        m_fields->m_listener.setFilter(req.get(fmt::format("https://raw.githubusercontent.com/KampWskiR/test3/main/tagList.json")));
+        m_fields->m_listener.setFilter(req.get(fmt::format("https://raw.githubusercontent.com/Dittor-Aud/tagging/main/tagList.json")));
 
         return true;
     };
