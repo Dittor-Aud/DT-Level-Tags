@@ -21,10 +21,10 @@ bool RequestTag::setup(std::vector<std::variant<std::string, bool>> level) {
     m_mainLayer->addChild(bg);
 
     std::string infoStr = "Unfortunately you cannot request tags directly here.\n"
-                          "But worry not, you can request tags on discord! Just click the discord icon "
-                          "to join our server, find the tag request channel, req, wait for approval, and walaa.\n"
-                          "We are waiting for the official dev to rebuild the requesting system.\n"
-                          "In the meantime, tag requests are on our discord.\n";
+                          "We are waiting for the official dev to rebuild "
+                          "the requesting system.\n"
+                          "In the meantime, tag requests are on our discord.\n"
+                          "Click the discord icon to join our server\n";
 
     auto info = SimpleTextArea::create(infoStr, "chatFont.fnt", 0.6, 270);
     info->setAlignment(CCTextAlignment::kCCTextAlignmentCenter);
