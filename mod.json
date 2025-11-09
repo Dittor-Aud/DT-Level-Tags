@@ -7,8 +7,8 @@
 		"ios": "2.2074"
 	},
 	"version": "v0.3.3-alpha",
-	"id": "kampwski.level_tags",
-	"name": "Level Tags",
+	"id": "dt.kampwski.level_tags",
+	"name": "DT Level Tags",
 	"developer": "KampWski",
 	"description": "A mod that adds tags to levels.",
 	"dependencies": [
