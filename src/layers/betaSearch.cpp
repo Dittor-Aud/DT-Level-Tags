@@ -378,7 +378,7 @@ void BetaSearch::search(CCObject*) {
     });
 
     auto req = web::WebRequest();
-    m_listener.setFilter(req.get("https://github.com/Dittor-Aud/tagging/main/leveltags.json"));
+    m_listener.setFilter(req.get("https://raw.githubusercontent.com/Dittor-Aud/tagging/main/leveltags.json"));
 }
 
 void BetaSearch::category(CCObject* sender) {
