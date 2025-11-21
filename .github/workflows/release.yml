@@ -12,26 +12,32 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - name: Windows
-          os: windows-latest
+          - name: Windows
+            os: windows-latest
 
-        - name: macOS
-          os: macos-latest
+          - name: macOS
+            os: macos-latest
 
-        - name: iOS
-          os: macos-latest
-          target: iOS
+          - name: iOS
+            os: macos-latest
+            target: iOS
 
-        - name: Android32
-          os: ubuntu-latest
-          target: Android32
+          - name: Android32
+            os: ubuntu-latest
+            target: Android32
+            ndk: true
 
-        - name: Android64
-          os: ubuntu-latest
-          target: Android64
+          - name: Android64
+            os: ubuntu-latest
+            target: Android64
+            ndk: true
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
+
+    env:
+      # Apply only when ndk: true is present
+      ANDROID_NDK_VERSION: ${{ matrix.config.ndk && '26.1.10909125' || '' }}
 
     steps:
       - uses: actions/checkout@v4
