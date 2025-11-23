@@ -14,17 +14,23 @@ jobs:
         config:
         - name: Windows
           os: windows-latest
-
+          
         - name: macOS
           os: macos-latest
 
         - name: Android32
           os: ubuntu-latest
           target: Android32
+          android-ndk-version: 26.3.11579264
 
         - name: Android64
           os: ubuntu-latest
           target: Android64
+          android-ndk-version: 26.3.11579264
+
+        - name: iOS
+          os: macos-latest
+          target: iOS
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -32,13 +38,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build the mod (RelWithDebInfo)
+      - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
-          build-config: RelWithDebInfo
-          export-pdb: true
+          bindings: geode-sdk/bindings
+          bindings-ref: main
           combine: true
           target: ${{ matrix.config.target }}
+          android-ndk-version: ${{ matrix.config.android-ndk-version }}
 
   package:
     name: Package builds
@@ -51,5 +58,5 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: Build Output (RelWithDebInfo)
+          name: Build Output
           path: ${{ steps.build.outputs.build-output }}
