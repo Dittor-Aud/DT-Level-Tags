@@ -25,12 +25,12 @@ jobs:
           - name: Android32
             os: ubuntu-latest
             target: Android32
-            ndk: true
+            android-ndk-version: 26.3.11579264
 
           - name: Android64
             os: ubuntu-latest
             target: Android64
-            ndk: true
+            android-ndk-version: 26.3.11579264
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
@@ -48,6 +48,7 @@ jobs:
           combine: true
           sdk: nightly
           target: ${{ matrix.config.target }}
+          android-ndk-version: ${{ matrix.config.android-ndk-version }}
 
   package:
     name: Package builds
