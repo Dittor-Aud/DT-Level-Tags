@@ -12,41 +12,38 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - name: Windows
-            os: windows-latest
+        - name: Windows
+          os: windows-latest
+          
+        - name: macOS
+          os: macos-latest
 
-          - name: macOS
-            os: macos-latest
+        - name: Android32
+          os: ubuntu-latest
+          target: Android32
+          android-ndk-version: 26.3.11579264
 
-          - name: iOS
-            os: macos-latest
-            target: iOS
+        - name: Android64
+          os: ubuntu-latest
+          target: Android64
+          android-ndk-version: 26.3.11579264
 
-          - name: Android32
-            os: ubuntu-latest
-            target: Android32
-            android-ndk-version: 26.3.11579264
-
-          - name: Android64
-            os: ubuntu-latest
-            target: Android64
-            android-ndk-version: 26.3.11579264
+        - name: iOS
+          os: macos-latest
+          target: iOS
 
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
 
-    env:
-      # Apply only when ndk: true is present
-      ANDROID_NDK_VERSION: ${{ matrix.config.ndk && '26.1.10909125' || '' }}
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build the mod (Release)
+      - name: Build the mod
         uses: geode-sdk/build-geode-mod@main
         with:
+          bindings: geode-sdk/bindings
+          bindings-ref: main
           combine: true
-          sdk: nightly
           target: ${{ matrix.config.target }}
           android-ndk-version: ${{ matrix.config.android-ndk-version }}
 
